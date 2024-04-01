@@ -15,13 +15,13 @@ app.listen(PORT, () => {
 //routes
 
 app.get("/", (req, res) => {
-  res.send("Hello world");
+  res.status(200).json({message: "Welcome to the Youtube to Mp3 converter API"});
 });
 
 app.post("/convert-mp3", async (req, res) => {
   const videoID = req.body.videoID;
   if (videoID == null || videoID == "" || videoID == undefined) {
-    return res.render("error", {
+    return res.status(400).json({
       success: false,
       error: "Please enter a valid video ID",
     });
@@ -38,13 +38,13 @@ app.post("/convert-mp3", async (req, res) => {
     );
     const fetchResponse = await fetchApi.json();
     if (fetchResponse.status == "ok") {
-      return res.render("success", {
+      return res.status(200).json({
         success: true,
         title: fetchResponse.title,
         link: fetchResponse.link,
       });
     } else {
-      return res.render("error", {
+      return res.status(500).json({
         success: false,
         error: fetchResponse.error,
       });
