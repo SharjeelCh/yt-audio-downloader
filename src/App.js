@@ -61,13 +61,14 @@ function App() {
           <FontAwesomeIcon icon={faYoutube} className="text-white-500 h-10" /> YouTube to MP3 Converter
         </h1>
         <h4 className="font-espn text-lg text-white py-5">Enter the Youtube video ID</h4>
-        <div className="border-1 w-40 flex-row">
+        <div className="bg-white w-80 h-48 flex flex-row justify-end rounded-lg shadow-sm">
           <input
             name="videoID"
             type="text"
             placeholder="Enter video ID"
+            className="ml-2 border-none"
           ></input>
-          <button type="submit" form="form" id="convert-btn">
+          <button type="submit" form="form" id="convert-btn" className="w-20 font-espn p-1 flex-1 h-full  hover:bg-green-600 hover:text-white hover:rounded-tr-lg hover:rounded-br-lg">
             Convert
           </button>
         </div>
