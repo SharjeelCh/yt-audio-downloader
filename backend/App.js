@@ -1,5 +1,6 @@
 const express = require("express");
 const fetch = require("node-fetch");
+const cors=require('cors');
 require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -7,6 +8,7 @@ const PORT = process.env.PORT || 8000;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true })); // need to parse html for post requests
 app.use(express.json());
+app.use(cors());
 
 app.listen(PORT, () => {
   console.log("Server is running on port ", PORT);
