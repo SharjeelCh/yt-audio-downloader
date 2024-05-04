@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 function App() {
   const [error, setError] = useState(false);
@@ -47,18 +49,19 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="h-screen flex flex-wrap">
       <form
         action="/convert-mp3"
         method="POST"
         id="form"
         onSubmit={handleSubmit}
+        className="w-screen flex flex-col justify-center items-center bg-green-600 h-60"
       >
-        <h1>
-          <i className="fab fa youtube"></i>Youtube to Mp3 Converter
+        <h1 className="font-espn text-4xl text-white italic font-bold pt-36">
+          <FontAwesomeIcon icon={faYoutube} className="text-white-500 h-10" /> YouTube to MP3 Converter
         </h1>
-        <h4>Enter the Youtube video ID</h4>
-        <div id="second">
+        <h4 className="font-espn text-lg text-white py-5">Enter the Youtube video ID</h4>
+        <div className="border-1 w-40 flex-row">
           <input
             name="videoID"
             type="text"
