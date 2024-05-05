@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     setserror("font-espn text-black tracking-widest animation-shake");
-  }, [serror]);
+  }, [error]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -85,16 +85,20 @@ function App() {
             type="submit"
             form="form"
             id="convert-btn"
-            className="w-18 tracking-widest font-espn p-1 flex-1 h-full  hover:bg-red-600 hover:text-white hover:rounded-tr-lg hover:rounded-br-lg"
+            className="w-18 tracking-widest font-espn p-1 flex-1 h-full rounded-br-lg rounded-tr-lg  hover:bg-red-600 hover:text-white hover:rounded-tr-lg hover:rounded-br-lg transition-colors active:bg-red-500"
           >
             Convert
           </button>
         </div>
       </form>
 
-      {error ? (
+      {
+        
+      }
+
+      {error || link=="" ? (
         <div className="w-screen items-center flex flex-col mt-10 sm:mt-12 md:mt-16 px-3 sm:px-4 md:px-4 justify-center align-center">
-          <p className="font-espn text-black tracking-widest animation-shake">{e}</p>
+          <p className={serror}>{e}</p>
         </div>
       ) : (
         <div className="w-screen items-center flex flex-col mt-10 sm:mt-12 md:mt-16 justify-center align-center px-3 sm:px-4 md:px-4">
@@ -102,7 +106,7 @@ function App() {
           <a href={link} download>
             <button
               id="download_btn"
-              className="shadow-xl bg-white w-32 sm:w-36 md:w-40 h-8 h-10 sm:h-12 md:h-16 mt-3 tracking-widest rounded-sm sm:rounded-md md:rounded-lg bg-red-600 font-espn text-white hover:text-lg"
+              className="shadow-xl bg-white w-32 sm:w-36 md:w-40 h-8 h-10 sm:h-12 md:h-16 mt-3 tracking-widest rounded-sm sm:rounded-md md:rounded-lg bg-red-600 font-espn text-white hover:text-lg transition-colors"
             >
               Download
             </button>
