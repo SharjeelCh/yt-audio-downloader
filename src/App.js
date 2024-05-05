@@ -20,6 +20,11 @@ function App() {
     console.log("form submitted");
     const formData = new FormData(event.target);
     const videoID = event.target.videoID.value;
+    if(videoID==""){
+      setError(true);
+      setE("Please enter a valid video ID.");
+      return;
+    }
 
     try {
       const response = await fetch("http://localhost:8000/convert-mp3", {
@@ -92,10 +97,6 @@ function App() {
         </div>
       </form>
 
-      {
-        
-      }
-
       {error || link=="" ? (
         <div className="w-screen items-center flex flex-col mt-10 sm:mt-12 md:mt-16 px-3 sm:px-4 md:px-4 justify-center align-center">
           <p className={serror}>{e}</p>
@@ -103,10 +104,10 @@ function App() {
       ) : (
         <div className="w-screen items-center flex flex-col mt-10 sm:mt-12 md:mt-16 justify-center align-center px-3 sm:px-4 md:px-4">
           <p className="font-espn text-black tracking-widest">{title}</p>
-          <a href={link} download>
+          <a href={link} download className="shadow-xl bg-white">
             <button
               id="download_btn"
-              className="shadow-xl bg-white w-32 sm:w-36 md:w-40 h-8 h-10 sm:h-12 md:h-16 mt-3 tracking-widest rounded-sm sm:rounded-md md:rounded-lg bg-red-600 font-espn text-white hover:text-lg transition-colors"
+              className="w-32 sm:w-36 md:w-40 h-10 sm:h-12 md:h-14 mt-3 tracking-widest rounded-sm sm:rounded-md md:rounded-lg bg-red-600 hover:bg-red-500 font-espn text-white transition-colors active:bg-red-400"
             >
               Download
             </button>
