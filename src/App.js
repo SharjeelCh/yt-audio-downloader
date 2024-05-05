@@ -9,11 +9,11 @@ function App() {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [pData, setPData] = useState([]);
-  const [serror,setserror]=useState("");
+  const [serror, setserror] = useState("");
 
-  useEffect(()=>{
-    setError("font-espn text-black tracking-widest")
-  },[serror])
+  useEffect(() => {
+    setserror("font-espn text-black tracking-widest animation-shake");
+  }, [serror]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -60,28 +60,32 @@ function App() {
         method="POST"
         id="form"
         onSubmit={handleSubmit}
-        className="w-screen flex flex-col justify-center items-center bg-green-600 h-64 py-4 sm:py-16 md:py-20 pl-2 sm:pl-3 md:pl-4"
+        className="w-screen flex flex-col justify-center items-center bg-red-600 h-56 sm:h-64 md:h-72 py-4 sm:py-16 md:py-20 px-2 sm:px-3 md:px-4 rounded-br-xl sm:rounded-br-2xl md:rounded-br-3xl rounded-bl-xl sm:rounded-bl-2xl md:rounded-bl-3xl"
       >
-        <h1 className="font-espn text-4xl text-white italic font-bold pt-36 sm:text-5xl md:text-5xl">
-          <FontAwesomeIcon icon={faYoutube} className="text-white-500 h-12 sm:h-10 md:h-12" />{" "}
+        <h1 className="font-espn text-2xl text-white italic font-bold pt-36 sm:text-3xl md:text-4xl">
+          <FontAwesomeIcon
+            icon={faYoutube}
+            className="text-white-500 h-8 sm:h-10 md:h-12"
+          />{" "}
           YouTube to MP3 Converter
         </h1>
-        <h4 className="font-espn text-lg text-white py-3 sm:text-xl py-3 sm:py-4 md:py-5">
+        <h4 className="font-espn text-base text-white sm:text-sm md:text-lg py-2 sm:py-5 md:py-7">
           Enter the Youtube video ID
         </h4>
-        <div className="bg-white w-72 sm:w-80 md:w-96 ml-3 mr-3 flex flex-row justify-end align-end rounded-lg shadow-sm overflow-visible">
+        <div className="bg-white w-[250px] sm:w-[350] md:w-[400px] mx-3 sm:mx-4 md:mx-4 flex flex-row justify-end align-end items-stretch rounded-lg shadow-xl bg-white">
           <input
             name="videoID"
             type="text"
             placeholder="Enter video ID"
-            className="flex-grow ml-2 border-none w-64 "
-            style={{height:'100%'}}
+            spellCheck
+            className="flex-grow rounded-md sm:rounded-md md:rounded-lg border-none w-48 sm:w-56 md:w-64 p-1 sm:p-2 md:p-3"
+            style={{ height: "100%" }}
           ></input>
           <button
             type="submit"
             form="form"
             id="convert-btn"
-            className="w-18 tracking-widest font-espn p-1 flex-1 h-full  hover:bg-green-600 hover:text-white hover:rounded-tr-lg hover:rounded-br-lg"
+            className="w-18 tracking-widest font-espn p-1 flex-1 h-full  hover:bg-red-600 hover:text-white hover:rounded-tr-lg hover:rounded-br-lg"
           >
             Convert
           </button>
@@ -90,7 +94,7 @@ function App() {
 
       {error ? (
         <div className="w-screen items-center flex flex-col mt-10 sm:mt-12 md:mt-16 px-3 sm:px-4 md:px-4 justify-center align-center">
-          <p className={serror}>{e}</p>
+          <p className="font-espn text-black tracking-widest animation-shake">{e}</p>
         </div>
       ) : (
         <div className="w-screen items-center flex flex-col mt-10 sm:mt-12 md:mt-16 justify-center align-center px-3 sm:px-4 md:px-4">
@@ -98,7 +102,7 @@ function App() {
           <a href={link} download>
             <button
               id="download_btn"
-              className="w-32 sm:w-36 md:w-40 h-8 sm:h-10 mt-3 tracking-widest rounded-lg bg-green-600 font-espn text-white hover:text-lg"
+              className="shadow-xl bg-white w-32 sm:w-36 md:w-40 h-8 h-10 sm:h-12 md:h-16 mt-3 tracking-widest rounded-sm sm:rounded-md md:rounded-lg bg-red-600 font-espn text-white hover:text-lg"
             >
               Download
             </button>
