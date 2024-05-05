@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 function App() {
   const [error, setError] = useState(false);
@@ -9,6 +9,11 @@ function App() {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [pData, setPData] = useState([]);
+  const [serror,setserror]=useState("");
+
+  useEffect(()=>{
+    setError("font-espn text-black tracking-widest")
+  },[serror])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,7 +40,7 @@ function App() {
       if (data.success) {
         setTitle(data.title);
         setLink(data.link);
-        console.log("link: ",link);
+        console.log("link: ", link);
         setError(false);
       } else {
         setError(true);
@@ -49,43 +54,57 @@ function App() {
   };
 
   return (
-    <div className="h-screen flex flex-wrap">
+    <div className="h-screen flex-wrap">
       <form
         action="/convert-mp3"
         method="POST"
         id="form"
         onSubmit={handleSubmit}
-        className="w-screen flex flex-col justify-center items-center bg-green-600 h-60"
+        className="w-screen flex flex-col justify-center items-center bg-green-600 h-64"
       >
         <h1 className="font-espn text-4xl text-white italic font-bold pt-36">
-          <FontAwesomeIcon icon={faYoutube} className="text-white-500 h-10" /> YouTube to MP3 Converter
+          <FontAwesomeIcon icon={faYoutube} className="text-white-500 h-10" />{" "}
+          YouTube to MP3 Converter
         </h1>
-        <h4 className="font-espn text-lg text-white py-5">Enter the Youtube video ID</h4>
-        <div className="bg-white w-80 h-48 flex flex-row justify-end rounded-lg shadow-sm">
+        <h4 className="font-espn text-lg text-white py-5">
+          Enter the Youtube video ID
+        </h4>
+        <div className="bg-white w-[350px] h-[200px] flex flex-row justify-end align-end rounded-lg shadow-sm overflow-visible">
           <input
             name="videoID"
             type="text"
             placeholder="Enter video ID"
-            className="ml-2 border-none"
+            className="ml-2 border-none w-64"
+            style={{height:'100%'}}
           ></input>
-          <button type="submit" form="form" id="convert-btn" className="w-20 font-espn p-1 flex-1 h-full  hover:bg-green-600 hover:text-white hover:rounded-tr-lg hover:rounded-br-lg">
+          <button
+            type="submit"
+            form="form"
+            id="convert-btn"
+            className="w-18 tracking-widest font-espn p-1 flex-1 h-full  hover:bg-green-600 hover:text-white hover:rounded-tr-lg hover:rounded-br-lg"
+          >
             Convert
           </button>
         </div>
-        </form>
+      </form>
 
-        {error ? (
-          <div id="error">
-            <p>{e}</p>
-          </div>
-        ) : (
-          <div id="success">
-            <p>{title}</p>
-            <a href={link} download>
-              <button id="download_btn">Download</button>
-            </a>
-          </div>
-        )}
+      {error ? (
+        <div className="w-screen items-center flex flex-col mt-16 justify-center align-center">
+          <p className={serror}>{e}</p>
+        </div>
+      ) : (
+        <div className="w-screen items-center flex flex-col mt-16 justify-center align-center">
+          <p className="font-espn text-black tracking-widest">{title}</p>
+          <a href={link} download>
+            <button
+              id="download_btn"
+              className="w-40 h-10 mt-3 tracking-widest rounded-lg bg-green-600 font-espn text-white hover:text-lg"
+            >
+              Download
+            </button>
+          </a>
+        </div>
+      )}
     </div>
   );
 }
