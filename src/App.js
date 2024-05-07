@@ -17,10 +17,9 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("form submitted");
-    const formData = new FormData(event.target);
+    
     const videoID = event.target.videoID.value;
-    if(videoID==""){
+    if(videoID===""){
       setError(true);
       setE("Please enter a valid video ID.");
       return;
@@ -39,13 +38,13 @@ function App() {
       }
 
       const data = await response.json();
-      console.log(data);
+      
       setPData([...pData, data]);
 
       if (data.success) {
         setTitle(data.title);
         setLink(data.link);
-        console.log("link: ", link);
+        
         setError(false);
       } else {
         setError(true);
@@ -97,7 +96,7 @@ function App() {
         </div>
       </form>
 
-      {error || link=="" ? (
+      {error || link==="" ? (
         <div className="w-screen items-center flex flex-col mt-10 sm:mt-12 md:mt-16 px-3 sm:px-4 md:px-4 justify-center align-center">
           <p className={serror}>{e}</p>
         </div>
