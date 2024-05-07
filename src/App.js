@@ -67,7 +67,7 @@ function App() {
         onSubmit={handleSubmit}
         className="w-screen flex flex-col justify-center items-center bg-red-600 h-56 sm:h-64 md:h-72 py-4 sm:py-16 md:py-20 px-2 sm:px-3 md:px-4 rounded-br-xl sm:rounded-br-2xl md:rounded-br-3xl rounded-bl-xl sm:rounded-bl-2xl md:rounded-bl-3xl"
       >
-        <h1 className="font-espn text-2xl text-white italic font-bold pt-36 sm:text-3xl md:text-4xl">
+        <h1 className="flex-col font-espn text-2xl text-white italic font-bold pt-36 sm:text-3xl md:text-4xl">
           <FontAwesomeIcon
             icon={faYoutube}
             className="text-white-500 h-8 sm:h-10 md:h-12"
